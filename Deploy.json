@@ -27,6 +27,36 @@
       "metadata": {
         "description": "ResourceID of workspace where audit log is collected"
       }
+    },
+    "Secret": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "TenantID": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "ClientID": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "Username": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "Password": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
     }
   },
   "functions": [],
@@ -59,6 +89,46 @@
               "uri": "https://raw.githubusercontent.com/gobimages/PersonalScripts/master/AccessReview.ps1",
               "version": "1.0.0.0"
             }
+          }
+        },
+        {
+          "name": "Secret",
+          "type": "variables",
+          "apiVersion": "2015-10-31",
+          "properties": {
+            "value": "[parameters('Secret')]",
+            "description": "Enter APP secret",
+            "isEncrypted": true
+          }
+        },
+        {
+          "name": "TenantID",
+          "type": "variables",
+          "apiVersion": "2015-10-31",
+          "properties": {
+            "value": "[parameters('TenantID')]",
+            "description": "Enter Tenant ID",
+            "isEncrypted": false
+          }
+        },
+        {
+          "name": "ClientID",
+          "type": "variables",
+          "apiVersion": "2015-10-31",
+          "properties": {
+            "value": "[parameters('ClientID')]",
+            "description": "Enter Application ID",
+            "isEncrypted": false
+          }
+        },
+        {
+          "name": "Email",
+          "type": "credentials",
+          "apiVersion": "2015-10-31",
+          "properties": {
+            "userName": "[parameters('Username')]",
+            "password": "[parameters('Password')]",
+            "description": "Enter the Email Credentials of mailbox that will be used to send Message"
           }
         }
       ]
