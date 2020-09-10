@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "WorkspaceID": {
+      "value": "/subscriptions/936195d3-5ada-4539-8819-d6e3ab174ef3/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/ggico"
+    },
+    "Alert_name": {
+      "value": "AccessReviewAlert"
+    },
+    "AccessReview": {
+      "value": "AccessReview"
+    },
+    "automationAccountName": {
+      "value": "AccessReview"
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "Alert_name": {
+      "type": "string",
+      "defaultValue": "AccessReviewAlert",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "automationAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "AccessReview": {
+      "type": "string",
+      "defaultValue": "AccessReview",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "WorkspaceID": {
+      "type": "string",
+      "metadata": {
+        "description": "ResourceID of workspace where audit log is collected"
+      }
+    }
+  },
+  "functions": [],
+  "variables": {
+    "RunBookName": "AccessReview-Run"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Automation/automationAccounts",
+      "apiVersion": "2020-01-13-preview",
+      "name": "[parameters('automationAccountName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "sku": {
+          "name": "Basic"
+        }
+      },
+      "resources": [
+        {
+          "type": "runbooks",
+          "apiVersion": "2018-06-30",
+          "name": "[variables('RunBookName')]",
+          "location": "[resourceGroup().location]",
+          "dependsOn": ["[parameters('automationAccountName')]"],
+          "properties": {
+            "runbookType": "PowerShell",
+            "logProgress": "false",
+            "logVerbose": "false",
+            "publishContentLink": {
+              "uri": "https://raw.githubusercontent.com/gobimages/PersonalScripts/master/AccessReview.ps1",
+              "version": "1.0.0.0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "microsoft.insights/actionGroups",
+      "apiVersion": "2019-03-01",
+      "name": "[parameters('AccessReview')]",
+      "location": "Global",
+      "properties": {
+        "groupShortName": "AccessReview",
+        "enabled": true,
+        "emailReceivers": [],
+        "smsReceivers": [],
+        "webhookReceivers": [],
+        "itsmReceivers": [],
+        "azureAppPushReceivers": [],
+        "automationRunbookReceivers": [],
+        "voiceReceivers": [],
+        "logicAppReceivers": [],
+        "azureFunctionReceivers": []
+      }
+    },
+    {
+      "type": "microsoft.insights/scheduledqueryrules",
+      "apiVersion": "2018-04-16",
+      "name": "[parameters('Alert_name')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('microsoft.insights/actionGroups', parameters('AccessReview'))]"
+      ],
+      "properties": {
+        "enabled": "true",
+        "source": {
+          "query": "AuditLogs\n| where Category contains \"Policy\" and ActivityDisplayName contains \"Access review ended\"\n| extend id_ = tostring(TargetResources[0].id)\n| extend ReviewID = id_\n| project  ReviewID\n",
+          "authorizedResources": [],
+          "dataSourceId": "[parameters('WorkspaceID')]",
+          "queryType": "ResultCount"
+        },
+        "schedule": {
+          "frequencyInMinutes": 5,
+          "timeWindowInMinutes": 15
+        },
+        "action": {
+          "severity": "4",
+          "aznsAction": {
+            "actionGroup": [
+              "[resourceId('microsoft.insights/actionGroups', parameters('AccessReview'))]"
+            ]
+          },
+          "trigger": {
+            "thresholdOperator": "GreaterThan",
+            "threshold": 0
+          },
+          "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
