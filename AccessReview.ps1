@@ -19,6 +19,7 @@ $UserCredential = Get-AutomationPSCredential -Name 'Email'
 $clientId = Get-AutomationVariable -Name 'ClientID'
 $tenantName = Get-AutomationVariable -Name 'TenantID'
 $clientSecret = Get-AutomationVariable -Name 'Secret'
+$EmailAddress = Get-AutomationVariable -Name 'Address'
 $resource = "https://graph.microsoft.com/"
 #Get Token
 $ReqTokenBody = @{
@@ -57,8 +58,8 @@ $mailParams = @{
     Port                       = '587' # or '25' if not using TLS
     UseSSL                     = $true ## or not if using non-TLS
     Credential                 = $UserCredential
-    From                       = 'thegman@developmentuk01.onmicrosoft.com'
-    To                         = 'v-gomage@microsoft.com'
+    From                       = $UserCredential.UserName
+    To                         = $EmailAddress
     Subject                    = "Access Review"
     DeliveryNotificationOption = 'OnFailure', 'OnSuccess'
 }
