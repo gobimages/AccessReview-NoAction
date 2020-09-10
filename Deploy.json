@@ -27,25 +27,25 @@
         "description": "ResourceID of workspace where audit log is collected"
       }
     },
-    "Secret": {
-      "type": "string",
-      "metadata": {
-        "description": "description"
-      }
-    },
-    "TenantID": {
-      "type": "string",
-      "metadata": {
-        "description": "description"
-      }
-    },
     "ClientID": {
       "type": "string",
       "metadata": {
         "description": "description"
       }
     },
+     "TenantID": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
     "Username": {
+      "type": "string",
+      "metadata": {
+        "description": "description"
+      }
+    },
+    "Secret": {
       "type": "string",
       "metadata": {
         "description": "description"
@@ -96,7 +96,7 @@
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
-            "value": "[parameters('Secret')]",
+            "value": "[concat('\"',parameters('Secret'),'\"')]",
             "description": "Enter APP secret",
             "isEncrypted": true
           }
@@ -107,7 +107,7 @@
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
-            "value": "[parameters('TenantID')]",
+            "value": "[concat('\"',parameters('TenantID'),'\"')]",
             "description": "Enter Tenant ID",
             "isEncrypted": false
           }
@@ -118,7 +118,7 @@
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
-            "value": "[parameters('ClientID')]",
+            "value": "[concat('\"', parameters('ClientID'), '\"')]",
             "description": "Enter Application ID",
             "isEncrypted": false
           }
