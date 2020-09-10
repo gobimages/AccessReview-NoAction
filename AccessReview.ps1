@@ -16,10 +16,9 @@ foreach ($J in $Json){
 $Properties = @()
 $UserCredential = Get-AutomationPSCredential -Name 'Email'
 # Application (client) ID, tenant Name and secret
-$clientId = "58b43c72-7d6c-4874-88fc-63ab7edcb280"
-$tenantName = "eab61951-fbe9-4b26-8c68-49681acae3fc"
-#$clientSecret = "y=f/gfYcrd?gujAShsRueC8Ndy2Ca[51"
-$clientSecret = "4g_yJG.07v1xhW2y8Ixwt57Kg5-Np2~4fJ"
+$clientId = Get-AutomationVariable -Name 'ClientID'
+$tenantName = Get-AutomationVariable -Name 'TenantID'
+$clientSecret = Get-AutomationVariable -Name 'Secret'
 $resource = "https://graph.microsoft.com/"
 #Get Token
 $ReqTokenBody = @{
