@@ -158,7 +158,7 @@
       "name": "[parameters('Alert_name')]",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[resourceId('microsoft.insights/actionGroups', parameters('AccessReview'))]"
+        "[resourceId('microsoft.insights/actionGroups', parameters('ActionGroupName'))]"
       ],
       "properties": {
         "enabled": "true",
@@ -176,7 +176,7 @@
           "severity": "4",
           "aznsAction": {
             "actionGroup": [
-              "[resourceId('microsoft.insights/actionGroups', parameters('AccessReview'))]"
+              "[resourceId('microsoft.insights/actionGroups', parameters('ActionGroupName'))]"
             ]
           },
           "trigger": {
