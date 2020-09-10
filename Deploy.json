@@ -6,20 +6,20 @@
       "type": "string",
       "defaultValue": "AccessReviewAlert",
       "metadata": {
-        "description": "description"
+        "description": "Name of the Alert"
       }
     },
     "automationAccountName": {
       "type": "string",
       "metadata": {
-        "description": "description"
+        "description": "Name of the Automation Account"
       }
     },
-    "AccessReview": {
+    "ActionGroupName": {
       "type": "string",
       "defaultValue": "AccessReview",
       "metadata": {
-        "description": "description"
+        "description": "Name of Actiongroup in Alert"
       }
     },
     "WorkspaceID": {
@@ -66,7 +66,7 @@
     {
       "type": "microsoft.insights/actionGroups",
       "apiVersion": "2019-03-01",
-      "name": "[parameters('AccessReview')]",
+      "name": "[parameters('ActionGroupName')]",
       "location": "Global",
       "properties": {
         "groupShortName": "AccessReview",
