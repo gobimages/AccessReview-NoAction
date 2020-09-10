@@ -13,6 +13,21 @@
     },
     "automationAccountName": {
       "value": "AccessReview"
+    },
+    "Secret": {
+      "value": "AccessReview"
+    },
+    "TenantID": {
+      "value": "AccessReview"
+    },
+    "ClientID": {
+      "value": "AccessReview"
+    },
+    "Username": {
+      "value": "AccessReview"
+    },
+    "Password": {
+      "value": "AccessReview"
     }
   }
 }
