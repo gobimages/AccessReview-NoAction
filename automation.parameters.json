@@ -6,28 +6,25 @@
       "value": "/subscriptions/936195d3-5ada-4539-8819-d6e3ab174ef3/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/ggico"
     },
     "Alert_name": {
-      "value": "AccessReviewAlert"
-    },
-    "AccessReview": {
-      "value": "AccessReview"
+      "value": null
     },
     "automationAccountName": {
-      "value": "AccessReview"
+      "value": null
     },
     "Secret": {
-      "value": "AccessReview"
+      "value": null
     },
     "TenantID": {
-      "value": "AccessReview"
+      "value": null
     },
     "ClientID": {
-      "value": "AccessReview"
+      "value": null
     },
     "Username": {
-      "value": "AccessReview"
+      "value": null
     },
     "Password": {
-      "value": "AccessReview"
+      "value": null
     }
   }
 }
