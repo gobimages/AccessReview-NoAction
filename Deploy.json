@@ -4,7 +4,6 @@
   "parameters": {
     "Alert_name": {
       "type": "string",
-      "defaultValue": "AccessReviewAlert",
       "metadata": {
         "description": "Name of the Alert"
       }
@@ -93,6 +92,7 @@
         },
         {
           "name": "Secret",
+          "dependsOn": ["[parameters('automationAccountName')]"],
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
@@ -103,6 +103,7 @@
         },
         {
           "name": "TenantID",
+          "dependsOn": ["[parameters('automationAccountName')]"],
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
@@ -113,6 +114,7 @@
         },
         {
           "name": "ClientID",
+          "dependsOn": ["[parameters('automationAccountName')]"],
           "type": "variables",
           "apiVersion": "2015-10-31",
           "properties": {
@@ -123,6 +125,7 @@
         },
         {
           "name": "Email",
+          "dependsOn": ["[parameters('automationAccountName')]"],
           "type": "credentials",
           "apiVersion": "2015-10-31",
           "properties": {
