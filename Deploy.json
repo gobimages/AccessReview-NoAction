@@ -30,31 +30,31 @@
     "ClientID": {
       "type": "string",
       "metadata": {
-        "description": "description"
+        "description": "Enter App ID"
       }
     },
      "TenantID": {
       "type": "string",
       "metadata": {
-        "description": "description"
+        "description": "Enter Tenant ID"
+      }
+    },
+     "Secret": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Enter App Secret"
       }
     },
     "Username": {
       "type": "string",
       "metadata": {
-        "description": "description"
-      }
-    },
-    "Secret": {
-      "type": "string",
-      "metadata": {
-        "description": "description"
+        "description": "Username of Mailbox that will be used to send mail"
       }
     },
     "Password": {
-      "type": "string",
+      "type": "securestring",
       "metadata": {
-        "description": "description"
+        "description": "Password of Mailbox that would be used to send mail"
       }
     }
   },
