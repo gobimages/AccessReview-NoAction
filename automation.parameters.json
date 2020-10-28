@@ -6,25 +6,25 @@
       "value": "/subscriptions/936195d3-5ada-4539-8819-d6e3ab174ef3/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/ggico"
     },
     "Alert_name": {
-      "value": "gobinath"
+      "value": null
     },
     "automationAccountName": {
-      "value": "helloworld"
+      "value": null
     },
     "ClientID": {
-      "value": "58b43c72-7d6c-4874-88fc-63ab7edcb280"
+      "value": null
     },
     "Secret": {
-      "value": "y=f/gfYcrd?gujAShsRueC8Ndy2Ca[51"
+      "value": null
     },
     "TenantID": {
-      "value": "eab61951-fbe9-4b26-8c68-49681acae3fc"
+      "value": null
     },
     "Username": {
       "value": "gobinath@rospoc.onmicrosoft.com"
     },
     "Password": {
-      "value": "Mellow225"
+      "value": null
     },
     "ToEmailAddress": {
       "value": null
